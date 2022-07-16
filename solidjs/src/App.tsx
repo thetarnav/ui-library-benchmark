@@ -1,4 +1,4 @@
-import { Component, createSignal, Index, useTransition } from "solid-js";
+import { Component, createSignal, Index, startTransition } from "solid-js";
 import classes from "./App.module.css";
 import { Item } from "./components/Item";
 import { SearchBox } from "./components/SearchBox";
@@ -7,7 +7,6 @@ import { itemMap } from "./data/items";
 const App: Component = () => {
   const [input, setInput] = createSignal("");
   const [searchQuery, setSearchQuery] = createSignal("");
-  const [, startTransition] = useTransition();
 
   const onChange = (input: string) => {
     setInput(input);
@@ -18,12 +17,12 @@ const App: Component = () => {
 
   return (
     <>
-      <div classList={{ [classes.pokemonList]: true }}>
+      <div class={classes.pokemonList}>
         <Index each={Array.from(itemMap.keys())}>
           {(id) => <Item id={id()} searchQuery={searchQuery()} />}
         </Index>
       </div>
-      <footer classList={{ [classes.footer]: true }}>
+      <footer class={classes.footer}>
         <p>
           Data is obtained from{" "}
           <a href="https://pokeapi.co/" rel="external">
@@ -32,7 +31,7 @@ const App: Component = () => {
           .
         </p>
       </footer>
-      <div classList={{ [classes.searchBox]: true }}>
+      <div class={classes.searchBox}>
         <SearchBox input={input()} onChange={onChange} />
       </div>
     </>

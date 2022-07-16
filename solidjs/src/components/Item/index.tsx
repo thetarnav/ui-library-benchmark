@@ -1,4 +1,4 @@
-import { Component, createMemo, Show, Switch } from "solid-js";
+import { Component, createMemo, Show } from "solid-js";
 import { itemMap } from "../../data/items";
 import classes from "./Item.module.css";
 
@@ -49,12 +49,12 @@ export const Item: Component<Props> = (props) => {
 
   return (
     <Show when={item() !== undefined && nameMarked() !== undefined}>
-      <div classList={{ [classes.wrapper]: true }}>
-        <div classList={{ [classes.id]: true }}>{item()!.id}</div>
+      <div class={classes.wrapper}>
+        <div class={classes.id}>{item()!.id}</div>
         <div>
           <span
+            class={classes.name}
             classList={{
-              [classes.name]: true,
               [classes.unmatchedName]: nameMarked()!.unmatched,
             }}
           >

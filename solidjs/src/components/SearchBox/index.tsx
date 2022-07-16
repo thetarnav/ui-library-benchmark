@@ -14,13 +14,11 @@ type Props = {
 
 export const SearchBox: Component<Props> = (props) => {
   return (
-    <div classList={{ [classes.wrapper]: true }}>
+    <div class={classes.wrapper}>
       <input
-        classList={{ [classes.input]: true }}
+        class={classes.input}
         value={props.input}
-        onInput={(e) =>
-          props.onChange((e.currentTarget as HTMLInputElement).value)
-        }
+        onInput={(e) => props.onChange(e.currentTarget.value)}
       />
     </div>
   );
